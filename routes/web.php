@@ -23,5 +23,12 @@ Route::middleware('auth')
     ->name('admin.')
     ->prefix('admin')
     ->group(function () {
-        Route::get('/project', [AdminProjectController::class, 'index'])->name('admin.project');
+
+        Route::get('/projects', [AdminProjectController::class, 'index'])->name('projects.index');
+        Route::get('/projects/create', [AdminProjectController::class, 'create'])->name('projects.create');
+        Route::post('/projects', [AdminProjectController::class, 'store'])->name('projects.store');
+        Route::get('/projects/{project}', [AdminProjectController::class, 'show'])->name('projects.show');
+        Route::get('/projects/{project}/edit', [AdminProjectController::class, 'edit'])->name('projects.edit');
+        Route::put('/projects/{project}', [AdminProjectController::class, 'update'])->name('projects.update');
+        Route::delete('/projects/{project}', [AdminProjectController::class, 'delete'])->name('projects.index');
     });
